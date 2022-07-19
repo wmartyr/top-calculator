@@ -78,6 +78,9 @@ select {
   --color-primary-orange: #FD9800;
   --color-secondary-pink: #E7AFD4;
   --color-secondary-blue: #99CDFD;
+  --color-hover-orange: #fcbd5f;
+  --color-hover-pink: #f2d2e7;
+  --color-hover-blue: #cfe7fc;
   font-family: 'Antonio', sans-serif;
 }
 
@@ -169,10 +172,22 @@ button {
   background-color: var(--color-secondary-blue);
 }
 
+.blue-key:hover {
+  background-color: var(--color-hover-blue);
+}
+
 .pink-key {
   background-color: var(--color-secondary-pink);
 }
 
+.pink-key:hover {
+  background-color: var(--color-hover-pink);
+}
+
 .orange-key {
   background-color: var(--color-primary-orange);
+}
+
+.orange-key:hover {
+  background-color: var(--color-hover-orange);
 }
