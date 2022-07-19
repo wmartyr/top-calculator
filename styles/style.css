@@ -135,10 +135,44 @@ h1 {
   width: 20px;
 }
 
-.background2 {
+.keypad {
   background-color: black;
   height: 310px;
   width: 430px;
   border-radius: 25px 0 0 25px;
   padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+button {
+  border: none;
+  padding: none;
+  border-radius: 20px;
+  margin: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: end;
+  height: 36px;
+  padding-right: 15px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#key-0 {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+
+.blue-key {
+  background-color: var(--color-secondary-blue);
+}
+
+.pink-key {
+  background-color: var(--color-secondary-pink);
+}
+
+.orange-key {
+  background-color: var(--color-primary-orange);
 }
