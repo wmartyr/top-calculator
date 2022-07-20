@@ -26,16 +26,16 @@ function showText(displayString) {
 function operate(operator, a, b) {
   switch (operator) {
     case "add":
-      return parseFloat((a + b).toPrecision(8));
+      return parseFloat((a + b).toPrecision(9));
       break;
     case "subtract":
-      return parseFloat((a - b).toPrecision(8));
+      return parseFloat((a - b).toPrecision(9));
       break;
     case "multiply":
-      return parseFloat((a * b).toPrecision(8));
+      return parseFloat((a * b).toPrecision(9));
       break;
     case "divide":
-      return parseFloat((a / b).toPrecision(8));
+      return parseFloat((a / b).toPrecision(9));
       break;
   }
 }
@@ -55,6 +55,9 @@ buttons.forEach((button) => {
         showText(displayString);
         break;
       case "c":
+        if (displayString.slice(-1) === ".") {
+          hasDecimal = false;
+        }
         displayString = displayString.slice(0, -1);
         showText(displayString);
         break;
@@ -85,21 +88,27 @@ buttons.forEach((button) => {
         break;
       case "key-7":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "7";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "7";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "key-8":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "8";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "8";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "key-9":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "9";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "9";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "multiply":
         if (operator === "none") {
@@ -120,21 +129,27 @@ buttons.forEach((button) => {
         break;
       case "key-4":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "4";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "4";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "key-5":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "5";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "5";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "key-6":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "6";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "6";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "subtract":
         if (operator === "none") {
@@ -155,21 +170,27 @@ buttons.forEach((button) => {
         break;
       case "key-1":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "1";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "1";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "key-2":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "2";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "2";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "key-3":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        displayString += "3";
-        showText(displayString);
-        numberEntered = true;
+        if (displayString.length < 8) {
+          displayString += "3";
+          showText(displayString);
+          numberEntered = true;
+        }
         break;
       case "add":
         if (operator === "none") {
@@ -190,9 +211,11 @@ buttons.forEach((button) => {
         break;
       case "key-0":
         displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (!(displayString === "-" || displayString === "")) {
-          displayString += "0";
-          showText(displayString);
+        if (displayString.length < 8) {
+          if (!(displayString === "-" || displayString === "")) {
+            displayString += "0";
+            showText(displayString);
+          }
         }
         break;
       case "dot":
