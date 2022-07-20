@@ -219,6 +219,7 @@ buttons.forEach((button) => {
         }
         break;
       case "dot":
+        displayToBeCleared = clearDisplay(displayToBeCleared);
         if (!hasDecimal) {
           displayString += ".";
           showText(displayString);
