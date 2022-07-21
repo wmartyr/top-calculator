@@ -155,7 +155,6 @@ function implementKeys(keyPressed) {
       if (operator !== "none" && numberEntered) {
         operand2 = parseFloat(displayString);
         result = operate(operator, operand1, operand2);
-        console.log({ result });
         displayString = result.toString();
         showText(displayString);
         hasDecimal = false;
@@ -172,14 +171,12 @@ function implementKeys(keyPressed) {
 // Mouse Support
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    console.log("mouse: " + button.id);
     implementKeys(button.id);
   });
 });
 
 // Keyboard Support
 document.addEventListener("keydown", (event) => {
-  console.log("keyboard: key-" + event.key);
   event.preventDefault();
   implementKeys("key-" + event.key);
 });
