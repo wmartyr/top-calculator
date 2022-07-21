@@ -241,5 +241,202 @@ buttons.forEach((button) => {
         }
         break;
     }
-  })
-})
+  });
+});
+
+// Keyboard Support
+document.addEventListener("keydown", (event) => {
+  console.log(event);
+  switch (event.key) {
+    case "Escape":
+      resetValues();
+      showText(displayString);
+      break;
+    case "Backspace":
+      if (displayString.slice(-1) === ".") {
+        hasDecimal = false;
+      }
+      displayString = displayString.slice(0, -1);
+      showText(displayString);
+      break;
+    case "`":
+      if (displayString.startsWith("-")) {
+        displayString = displayString.slice(1);
+      } else {
+        displayString = "-" + displayString;
+      }
+      showText(displayString);
+      break;
+    case "/":
+      if (operator === "none") {
+        operand1 = parseFloat(displayString);
+        numberEntered = false;
+      } else {
+        if (numberEntered) {
+          operand2 = parseFloat(displayString);
+          result = operate(operator, operand1, operand2);
+          showText(result.toString());
+          operand1 = result;
+          operand2 = 0;
+          numberEntered = false;
+        }
+      }
+      operator = "divide";
+      displayToBeCleared = true;
+      break;
+    case "7":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "7";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "8":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "8";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "9":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "9";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "*":
+      if (operator === "none") {
+        operand1 = parseFloat(displayString);
+        numberEntered = false;
+      } else {
+        if (numberEntered) {
+          operand2 = parseFloat(displayString);
+          result = operate(operator, operand1, operand2);
+          showText(result.toString());
+          operand1 = result;
+          operand2 = 0;
+          numberEntered = false;
+        }
+      }
+      operator = "multiply";
+      displayToBeCleared = true;
+      break;
+    case "4":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "4";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "5":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "5";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "6":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "6";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "-":
+      if (operator === "none") {
+        operand1 = parseFloat(displayString);
+        numberEntered = false;
+      } else {
+        if (numberEntered) {
+          operand2 = parseFloat(displayString);
+          result = operate(operator, operand1, operand2);
+          showText(result.toString());
+          operand1 = result;
+          operand2 = 0;
+          numberEntered = false;
+        }
+      }
+      operator = "subtract";
+      displayToBeCleared = true;
+      break;
+    case "1":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "1";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "2":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "2";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "3":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        displayString += "3";
+        showText(displayString);
+        numberEntered = true;
+      }
+      break;
+    case "+":
+      if (operator === "none") {
+        operand1 = parseFloat(displayString);
+        numberEntered = false;
+      } else {
+        if (numberEntered) {
+          operand2 = parseFloat(displayString);
+          result = operate(operator, operand1, operand2);
+          showText(result.toString());
+          operand1 = result;
+          operand2 = 0;
+          numberEntered = false;
+        }
+      }
+      operator = "add";
+      displayToBeCleared = true;
+      break;
+    case "0":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (displayString.length < 8) {
+        if (!(displayString === "-" || displayString === "")) {
+          displayString += "0";
+          showText(displayString);
+        }
+      }
+      break;
+    case ".":
+      displayToBeCleared = clearDisplay(displayToBeCleared);
+      if (!hasDecimal) {
+        displayString += ".";
+        showText(displayString);
+        hasDecimal = true;
+      }
+      break;
+    case "Enter":
+      if (operator !== "none" && numberEntered) {
+        operand2 = parseFloat(displayString);
+        result = operate(operator, operand1, operand2);
+        displayString = result.toString();
+        showText(displayString);
+        hasDecimal = false;
+        operand1 = 0;
+        operand2 = 0;
+        operator = "none";
+        numberEntered = false;
+        displayToBeCleared = true;
+      }
+      break;
+  }
+});
