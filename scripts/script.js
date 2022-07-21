@@ -76,18 +76,18 @@ function prepareOperation(action) {
 
 function implementKeys(keyPressed) {
   switch (keyPressed) {
-    case "Escape":
+    case "key-Escape":
       resetValues();
       showText(displayString);
       break;
-    case "Backspace":
+    case "key-Backspace":
       if (displayString.slice(-1) === ".") {
         hasDecimal = false;
       }
       displayString = displayString.slice(0, -1);
       showText(displayString);
       break;
-    case "`":
+    case "key-`":
       if (displayString.startsWith("-")) {
         displayString = displayString.slice(1);
       } else {
@@ -95,46 +95,46 @@ function implementKeys(keyPressed) {
       }
       showText(displayString);
       break;
-    case "/":
+    case "key-/":
       prepareOperation("divide");
       break;
-    case "7":
+    case "key-7":
       enterCharacter(7);
       break;
-    case "8":
+    case "key-8":
       enterCharacter(8);
       break;
-    case "9":
+    case "key-9":
       enterCharacter(9);
       break;
-    case "*":
+    case "key-*":
       prepareOperation("multiply");
       break;
-    case "4":
+    case "key-4":
       enterCharacter(4);
       break;
-    case "5":
+    case "key-5":
       enterCharacter(5);
       break;
-    case "6":
+    case "key-6":
       enterCharacter(6);
       break;
-    case "-":
+    case "key--":
       prepareOperation("subtract");
       break;
-    case "1":
+    case "key-1":
       enterCharacter(1);
       break;
-    case "2":
+    case "key-2":
       enterCharacter(2);
       break;
-    case "3":
+    case "key-3":
       enterCharacter(3);
       break;
-    case "+":
+    case "key-+":
       prepareOperation("add");
       break;
-    case "0":
+    case "key-0":
       displayToBeCleared = clearDisplay(displayToBeCleared);
       if (displayString.length < 8) {
         if (!(displayString === "-" || displayString === "")) {
@@ -143,7 +143,7 @@ function implementKeys(keyPressed) {
         }
       }
       break;
-    case ".":
+    case "key-.":
       displayToBeCleared = clearDisplay(displayToBeCleared);
       if (!hasDecimal) {
         displayString += ".";
@@ -151,10 +151,11 @@ function implementKeys(keyPressed) {
         hasDecimal = true;
       }
       break;
-    case "Enter":
+    case "key-Enter":
       if (operator !== "none" && numberEntered) {
         operand2 = parseFloat(displayString);
         result = operate(operator, operand1, operand2);
+        console.log({ result });
         displayString = result.toString();
         showText(displayString);
         hasDecimal = false;
@@ -171,11 +172,14 @@ function implementKeys(keyPressed) {
 // Mouse Support
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
+    console.log("mouse: " + button.id);
     implementKeys(button.id);
   });
 });
 
 // Keyboard Support
 document.addEventListener("keydown", (event) => {
-  implementKeys(event.key);
+  console.log("keyboard: key-" + event.key);
+  event.preventDefault();
+  implementKeys("key-" + event.key);
 });
