@@ -165,7 +165,7 @@ button {
   font-weight: bold;
 }
 
-#key-0 {
+.wide-key {
   grid-column-start: 1;
   grid-column-end: span 2;
 }
