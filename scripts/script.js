@@ -168,6 +168,7 @@ function implementKeys(keyPressed) {
   }
 }
 
+// Mouse Support
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     implementKeys(button.id);

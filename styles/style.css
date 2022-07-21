@@ -163,6 +163,16 @@ button {
   padding-right: 15px;
   font-size: 1.25rem;
   font-weight: bold;
+  transition: transform 150ms ease-out;
+}
+
+button:focus {
+    outline: 2px solid #fff;
+    outline-offset: -3px;
+}
+
+button:active {
+    transform: scale(0.9);
 }
 
 .wide-key {
