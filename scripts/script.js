@@ -47,6 +47,33 @@ function clearDisplay(displayClear) {
   return false;
 }
 
+function enterCharacter(char) {
+  displayToBeCleared = clearDisplay(displayToBeCleared);
+  if (displayString.length < 8) {
+    displayString += char;
+    showText(displayString);
+    numberEntered = true;
+  }
+}
+
+function prepareOperation(action) {
+  if (operator === "none") {
+    operand1 = parseFloat(displayString);
+    numberEntered = false;
+  } else {
+    if (numberEntered) {
+      operand2 = parseFloat(displayString);
+      result = operate(operator, operand1, operand2);
+      showText(result.toString());
+      operand1 = result;
+      operand2 = 0;
+      numberEntered = false;
+    }
+  }
+  operator = action;
+  displayToBeCleared = true;
+}
+
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     switch (button.id) {
@@ -70,144 +97,43 @@ buttons.forEach((button) => {
         showText(displayString);
         break;
       case "divide":
-        if (operator === "none") {
-          operand1 = parseFloat(displayString);
-          numberEntered = false;
-        } else {
-          if (numberEntered) {
-            operand2 = parseFloat(displayString);
-            result = operate(operator, operand1, operand2);
-            showText(result.toString());
-            operand1 = result;
-            operand2 = 0;
-            numberEntered = false;
-          }
-        }
-        operator = "divide";
-        displayToBeCleared = true;
+        prepareOperation("divide");
         break;
       case "key-7":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "7";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(7);
         break;
       case "key-8":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "8";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(8);
         break;
       case "key-9":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "9";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(9);
         break;
       case "multiply":
-        if (operator === "none") {
-          operand1 = parseFloat(displayString);
-          numberEntered = false;
-        } else {
-          if (numberEntered) {
-            operand2 = parseFloat(displayString);
-            result = operate(operator, operand1, operand2);
-            showText(result.toString());
-            operand1 = result;
-            operand2 = 0;
-            numberEntered = false;
-          }
-        }
-        operator = "multiply";
-        displayToBeCleared = true;
+        prepareOperation("multiply");
         break;
       case "key-4":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "4";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(4);
         break;
       case "key-5":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "5";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(5);
         break;
       case "key-6":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "6";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(6);
         break;
       case "subtract":
-        if (operator === "none") {
-          operand1 = parseFloat(displayString);
-          numberEntered = false;
-        } else {
-          if (numberEntered) {
-            operand2 = parseFloat(displayString);
-            result = operate(operator, operand1, operand2);
-            showText(result.toString());
-            operand1 = result;
-            operand2 = 0;
-            numberEntered = false;
-          }
-        }
-        operator = "subtract";
-        displayToBeCleared = true;
+        prepareOperation("subtract");
         break;
       case "key-1":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "1";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(1);
         break;
       case "key-2":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "2";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(2);
         break;
       case "key-3":
-        displayToBeCleared = clearDisplay(displayToBeCleared);
-        if (displayString.length < 8) {
-          displayString += "3";
-          showText(displayString);
-          numberEntered = true;
-        }
+        enterCharacter(3);
         break;
       case "add":
-        if (operator === "none") {
-          operand1 = parseFloat(displayString);
-          numberEntered = false;
-        } else {
-          if (numberEntered) {
-            operand2 = parseFloat(displayString);
-            result = operate(operator, operand1, operand2);
-            showText(result.toString());
-            operand1 = result;
-            operand2 = 0;
-            numberEntered = false;
-          }
-        }
-        operator = "add";
-        displayToBeCleared = true;
+        prepareOperation("add");
         break;
       case "key-0":
         displayToBeCleared = clearDisplay(displayToBeCleared);
