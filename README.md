@@ -26,8 +26,8 @@ This final project is going to combine everything I’ve learned so far. I'm goi
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/wmartyr/top-calculator](https://github.com/wmartyr/top-calculator)
+- Live Site URL: [https://wmartyr.github.io/top-calculator/](https://wmartyr.github.io/top-calculator)
 
 ## My process
 
